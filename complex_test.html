@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Performance Test</title>
+</head>
+<body>
+<script>
+    function complexComputation() {
+        let arr = [];
+        for (let i = 0; i < 1e6; i++) {
+            arr.push(Math.sqrt(i) * Math.sin(i));
+        }
+
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+
+        return sum;
+    }
+
+    function main() {
+        let startTime = performance.now();
+        let result = complexComputation();
+        let endTime = performance.now();
+        let duration = endTime - startTime;
+
+        console.log("Complex Computation took " + duration + " milliseconds");
+        console.log("Result:", result);
+    }
+
+    // Call the main function
+    main();
+</script>
+</body>
+</html>
